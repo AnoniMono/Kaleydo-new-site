@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kaleydo Entertainment | Eventi Audio, Luci e Spettacolo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="container">
+        <a href="#top" class="logo" aria-label="Kaleydo Entertainment">Kaleydo</a>
+        <nav class="main-nav" aria-label="Primary">
+          <button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <ul id="nav-menu">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#services">Servizi</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#about">Chi Siamo</a></li>
+            <li><a href="#contact">Contatti</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="hero" data-parallax>
+        <video class="hero-video" autoplay muted loop playsinline>
+          <source src="https://cdn.coverr.co/videos/coverr-dj-people-party-0067/1080p.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content" data-animate>
+          <p class="eyebrow">Kaleydo Entertainment</p>
+          <h1>Accendiamo luce, suono ed emozione in ogni evento.</h1>
+          <p class="hero-subtitle">
+            Dal matrimonio intimo al gala internazionale, trasformiamo gli spazi con scenografie luminose, audio impeccabile e performance memorabili.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#portfolio">Scopri il nostro mondo</a>
+            <a class="btn secondary" href="#contact">Prenota una consulenza</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="services section" id="services">
+        <div class="container">
+          <header class="section-header" data-animate>
+            <p class="eyebrow">Servizi</p>
+            <h2>Esperienze immersive per ogni occasione</h2>
+          </header>
+          <div class="services-grid">
+            <article class="service-card" data-animate>
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 20h8v24h-8a4 4 0 0 1-4-4V24a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="2" />
+                  <path d="M44 12h8v40h-8a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="2" />
+                  <path d="M32 28h8v16h-8a4 4 0 0 1-4-4v-8a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="2" />
+                </svg>
+              </div>
+              <h3>Audio</h3>
+              <p>
+                Progettiamo sistemi audio su misura, garantendo dialoghi chiari, bassi potenti e un sound design che avvolge ogni ospite.
+              </p>
+            </article>
+            <article class="service-card" data-animate>
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M32 10 8 54h48L32 10Z" stroke="currentColor" stroke-width="2" />
+                  <circle cx="32" cy="36" r="6" stroke="currentColor" stroke-width="2" />
+                </svg>
+              </div>
+              <h3>Luci</h3>
+              <p>
+                Coreografie luminose dinamiche, wall mapping e atmosfere cinematografiche per emozionare e raccontare la tua storia.
+              </p>
+            </article>
+            <article class="service-card" data-animate>
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 14h24l-4 12h-16l-4-12Z" stroke="currentColor" stroke-width="2" />
+                  <path d="M12 50h8l4-12h16l4 12h8" stroke="currentColor" stroke-width="2" />
+                  <circle cx="32" cy="32" r="4" stroke="currentColor" stroke-width="2" />
+                </svg>
+              </div>
+              <h3>Entertainment</h3>
+              <p>
+                DJ set, performer e live show selezionati con cura per creare momenti indimenticabili e coinvolgere ogni pubblico.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="portfolio section" id="portfolio">
+        <div class="container">
+          <header class="section-header" data-animate>
+            <p class="eyebrow">Portfolio</p>
+            <h2>Eventi che brillano di luce propria</h2>
+          </header>
+          <div class="portfolio-grid">
+            <figure class="portfolio-item" data-animate>
+              <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Wedding in Florence" />
+              <figcaption>Matrimonio a Firenze</figcaption>
+            </figure>
+            <figure class="portfolio-item" data-animate>
+              <img src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80" alt="Corporate Gala" />
+              <figcaption>Corporate Gala Milano</figcaption>
+            </figure>
+            <figure class="portfolio-item" data-animate>
+              <img src="https://images.unsplash.com/photo-1508606572321-901ea443707f?auto=format&fit=crop&w=900&q=80" alt="Luxury Event" />
+              <figcaption>Lancio prodotto Lusso</figcaption>
+            </figure>
+            <figure class="portfolio-item" data-animate>
+              <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=900&q=80" alt="Beach Wedding" />
+              <figcaption>Cerimonia in Costiera</figcaption>
+            </figure>
+            <figure class="portfolio-item" data-animate>
+              <img src="https://images.unsplash.com/photo-1464375117522-1311d6a5b81a?auto=format&fit=crop&w=900&q=80" alt="Club Event" />
+              <figcaption>Party esclusivo</figcaption>
+            </figure>
+            <figure class="portfolio-item" data-animate>
+              <img src="https://images.unsplash.com/photo-1472657539640-21b89e5fcc49?auto=format&fit=crop&w=900&q=80" alt="Outdoor Event" />
+              <figcaption>Festival all'aperto</figcaption>
+            </figure>
+            <figure class="portfolio-item" data-animate>
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Fashion Show" />
+              <figcaption>Sfilata di moda</figcaption>
+            </figure>
+            <figure class="portfolio-item" data-animate>
+              <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80" alt="Private Event" />
+              <figcaption>Evento privato</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="about section" id="about">
+        <div class="container about-wrapper">
+          <div class="about-image" data-animate>
+            <img src="https://images.unsplash.com/photo-1543644090-0e55e5d09066?auto=format&fit=crop&w=900&q=80" alt="Team Kaleydo" />
+          </div>
+          <div class="about-content" data-animate>
+            <p class="eyebrow">Chi Siamo</p>
+            <h2>Passione italiana per l'emozione live</h2>
+            <p>
+              Kaleydo Entertainment nasce dall'incontro di professionisti del suono, della luce e dello spettacolo con una visione comune: trasformare ogni evento in un racconto multisensoriale.
+            </p>
+            <p>
+              Dal concept alla regia tecnica, accompagniamo i nostri clienti con creatività, cura artigianale e tecnologie di ultima generazione, dando vita a esperienze che rimangono nella memoria.
+            </p>
+            <a class="btn ghost" href="#contact">Scopri la nostra storia</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-cta" id="contact">
+        <div class="container" data-animate>
+          <h2>Costruiamo qualcosa di indimenticabile.</h2>
+          <p>
+            Parlaci del tuo evento: ti guideremo nella scelta delle atmosfere, delle sonorità e delle performance che lo renderanno unico.
+          </p>
+          <a class="btn primary" href="mailto:info@kaleydo.com">Contattaci</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-brand">
+          <span class="logo">Kaleydo</span>
+          <p>Audio · Luci · Entertainment</p>
+        </div>
+        <div class="footer-links">
+          <nav aria-label="Footer">
+            <ul>
+              <li><a href="#hero">Home</a></li>
+              <li><a href="#services">Servizi</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#about">Chi Siamo</a></li>
+              <li><a href="#contact">Contatti</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer-social">
+          <p>Seguici</p>
+          <ul>
+            <li><a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://www.youtube.com" target="_blank" rel="noopener">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <small>&copy; 2025 Kaleydo Entertainment. Tutti i diritti riservati.</small>
+      </div>
+    </footer>
+
+    <script src="main.js" defer></script>
+  </body>
+</html>
+
