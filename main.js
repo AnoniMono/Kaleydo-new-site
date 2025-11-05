@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const parallaxElements = document.querySelectorAll("[data-parallax]");
   const heroSection = document.querySelector(".hero");
   const heroTitleBlock = document.querySelector(".hero-title-block");
+  const heroCarouselEl = document.querySelector("[data-hero-carousel]");
   const introOverlay = document.querySelector(".logo-intro");
 
   const updateHeaderState = () => {
@@ -96,6 +97,38 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => {
     window.requestAnimationFrame(updateParallax);
   });
+
+  if (heroCarouselEl) {
+    const heroSlides = Array.from(heroCarouselEl.querySelectorAll("[data-hero-slide]"));
+    const heroPrev = heroCarouselEl.querySelector("[data-hero-prev]");
+    const heroNext = heroCarouselEl.querySelector("[data-hero-next]");
+    let heroActiveIndex = heroSlides.findIndex(slide => slide.classList.contains("is-active"));
+    heroActiveIndex = heroActiveIndex >= 0 ? heroActiveIndex : 0;
+
+    const setHeroSlide = index => {
+      heroSlides.forEach((slide, idx) => {
+        slide.classList.toggle("is-active", idx === index);
+      });
+    };
+
+    const advanceHeroSlide = delta => {
+      if (!heroSlides.length) return;
+      heroActiveIndex = (heroActiveIndex + delta + heroSlides.length) % heroSlides.length;
+      setHeroSlide(heroActiveIndex);
+    };
+
+    let heroCarouselInterval = window.setInterval(() => advanceHeroSlide(1), 5200);
+
+    heroPrev?.addEventListener("click", () => {
+      advanceHeroSlide(-1);
+    });
+
+    heroNext?.addEventListener("click", () => {
+      advanceHeroSlide(1);
+    });
+
+    setHeroSlide(heroActiveIndex);
+  }
 
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(
@@ -350,6 +383,141 @@ document.addEventListener("DOMContentLoaded", () => {
       if (event.target === galleryModal && !galleryModal.classList.contains("is-active")) {
         activeGallery = null;
         activeIndex = 0;
+      }
+    });
+  }
+
+  const portfolioCarouselEl = document.querySelector("[data-portfolio-carousel]");
+  if (portfolioCarouselEl) {
+    const portfolioSlides = Array.from(portfolioCarouselEl.querySelectorAll("[data-portfolio-slide]"));
+    const portfolioPrev = portfolioCarouselEl.querySelector("[data-portfolio-prev]");
+    const portfolioNext = portfolioCarouselEl.querySelector("[data-portfolio-next]");
+    let portfolioActiveIndex = portfolioSlides.findIndex(slide => slide.classList.contains("is-active"));
+    portfolioActiveIndex = portfolioActiveIndex >= 0 ? portfolioActiveIndex : 0;
+
+    const setPortfolioSlide = index => {
+      portfolioSlides.forEach((slide, idx) => {
+        slide.classList.toggle("is-active", idx === index);
+      });
+    };
+
+    const advancePortfolioSlide = delta => {
+      if (!portfolioSlides.length) return;
+      portfolioActiveIndex = (portfolioActiveIndex + delta + portfolioSlides.length) % portfolioSlides.length;
+      setPortfolioSlide(portfolioActiveIndex);
+    };
+
+    const restartPortfolioInterval = () => {
+      window.clearInterval(portfolioCarouselInterval);
+      portfolioCarouselInterval = window.setInterval(() => advancePortfolioSlide(1), 5200);
+    };
+
+    let portfolioCarouselInterval = window.setInterval(() => advancePortfolioSlide(1), 5200);
+
+    portfolioPrev?.addEventListener("click", () => {
+      advancePortfolioSlide(-1);
+      restartPortfolioInterval();
+    });
+
+    portfolioNext?.addEventListener("click", () => {
+      advancePortfolioSlide(1);
+      restartPortfolioInterval();
+    });
+
+    portfolioCarouselEl.addEventListener("mouseenter", () => {
+      window.clearInterval(portfolioCarouselInterval);
+    });
+
+    portfolioCarouselEl.addEventListener("mouseleave", () => {
+      restartPortfolioInterval();
+    });
+
+    setPortfolioSlide(portfolioActiveIndex);
+  }
+
+  const reviewsSection = document.querySelector("[data-review-section]");
+  if (reviewsSection) {
+    const reviewTextEl = reviewsSection.querySelector("[data-review-text]");
+    const reviewAuthorEl = reviewsSection.querySelector("[data-review-author]");
+    const card = reviewsSection.querySelector("[data-review-panel]");
+
+    const reviews = [
+      {
+        text: `Professionalità, efficienza, serietà e tanta tanta passione per un'azienda di grandi professionisti al servizio di eventi, aziende e privati. Marcello è un direttore d'orchestra competente ed eccellente per un risultato garantito!`,
+        author: "Veronica Bellandi Bulgari · 13 dicembre 2017 · Facebook"
+      },
+      {
+        text: `Grande preparazione, affidabilità e innovazione. Sanno indirizzare il cliente verso la scelta ideale grazie alla tanta esperienza. Consiglio.`,
+        author: "Gianmarco Colzi · 6 giugno 2018 · Facebook"
+      },
+      {
+        text: `The best! 5 stelle assicurate.`,
+        author: "Gianluca De Vivo · 13 giugno 2018 · Facebook"
+      },
+      {
+        text: `I worked with Alessandro and his team on multiple projects, and every time it was a pleasure, every time great results and happy clients! My work as a wedding planner seriously relies on the vendors who I recommend to my couples, especially for a destination wedding. Alessandro works with each couple and with me in an attentive and professional manner, he listens to the clients' needs, gives great recommendations and assures a perfect service. His English is great and his knowledge in the area of sound, video, lighting, music and all kinds of entertainment is simply impressive. We became friends over the years and we always meet for a chat or dinner when I come to Tuscany. Highly recommend!`,
+        author: "Luba Mitnik-Gankin · 14 dicembre 2018 · Facebook"
+      },
+      {
+        text: `I worked with Alessandro and his team on multiple projects, and every time it was a pleasure, every time great results and happy clients! My work as a wedding planner seriously relies on the vendors who I recommend to my couples. It is especially important for a destination wedding. Alessandro works with each couple and with me in an attentive and professional manner, he listens to the clients' needs, gives great recommendations and assures a perfect service. His English is great and his knowledge in the area of sound, video, lighting, music and all kinds of entertainment is simply impressive. We became friends over the years and we always meet for a chat or dinner when I come to Tuscany. Highly recommend!`,
+        author: "Luba Gankin · 6 anni fa · Google"
+      },
+      {
+        text: `We hired Kaleydo Entertainment for our wedding at the St. Regis / Westin Excelsior in Florence and they were awesome. The communication from the start was excellent, the services provided were first class, and the performers outstanding. We booked a string duo for our ceremony who played every song we requested, then used their lighting and DJ for the evening. The lighting gave a great feel to the ballroom and the DJ was out of this world good—accommodating and with brilliant remixes. If you are looking for lighting and music packages in the Florence area, use these guys!`,
+        author: "Kajaul Mostofi · 6 anni fa · Google"
+      },
+      {
+        text: `Alessandro and his team created the perfect wedding atmosphere for us—they turned already beautiful spaces in Tuscany into pure magic. Ale is incredibly talented and clearly has a lot of experience as everything ran without a fault and the light, sound, etc., were absolutely perfect!! Grazie Ale :)`,
+        author: "Dina Locke · 2 anni fa · Google"
+      },
+      {
+        text: `Kaleydo illuminated our wedding at Villa La Selva in Tuscany with extraordinary lighting and audio expertise. The lighting turned the venue into a dreamlike setting and added a layer of enchantment that left our guests spellbound. The audio ensured our vows, speeches and music were crystal clear. The team was professional and remarkably accommodating, collaborating seamlessly with our vendors. Their artistic and technical brilliance elevated our wedding day to a whole new level.`,
+        author: "Patrick McDonald · 2 anni fa · Google"
+      }
+    ];
+
+    let currentReview = 0;
+    let rotationInterval;
+
+    const renderReview = index => {
+      if (!reviews.length) return;
+      const normalizedIndex = (index + reviews.length) % reviews.length;
+      currentReview = normalizedIndex;
+      reviewTextEl.textContent = reviews[normalizedIndex].text;
+      reviewAuthorEl.textContent = reviews[normalizedIndex].author;
+    };
+
+    const advanceReview = delta => {
+      renderReview(currentReview + delta);
+    };
+
+    const startRotation = () => {
+      window.clearInterval(rotationInterval);
+      rotationInterval = window.setInterval(() => advanceReview(1), 9000);
+    };
+
+    const stopRotation = () => {
+      window.clearInterval(rotationInterval);
+    };
+
+    renderReview(currentReview);
+    startRotation();
+
+    card?.addEventListener("mouseenter", stopRotation);
+    card?.addEventListener("mouseleave", startRotation);
+    card?.addEventListener("focusin", stopRotation);
+    card?.addEventListener("focusout", startRotation);
+
+    reviewsSection.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        advanceReview(-1);
+        startRotation();
+      }
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        advanceReview(1);
+        startRotation();
       }
     });
   }
